@@ -37,7 +37,7 @@ class App(QWidget):
         self.discoverbutton = QPushButton('Discover', self)
         self.discoverbutton.setToolTip('Discover Yeelight device')
         self.connectbutton = QPushButton('Connect', self)
-        self.connectbutton.setToolTip('Connect to Yeelight device')
+        self.connectbutton.setToolTip('Connect to the discovered Yeelight device')
         self.connectbutton.setEnabled(False)
         self.boxgroup = QGroupBox()
 
@@ -66,14 +66,18 @@ class App(QWidget):
             self.idbox.setText('Lamp ID: ' + str(self.yeelight.id))
             self.versionbox.setText('Firmware version: ' + str(self.yeelight.version))
             self.connectbutton.setEnabled(True)
+        else:
+            self.connectbutton.setEnabled(False)
             
     def connect_click(self):
         if not self._connected:
             if self.yeelight.connect():
                 self.connectbutton.setText('Disconnect')
+                self.connectbutton.setToolTip('Disconnect from the Yeelight device')
         else:
             if self.yeelight.disconnect():
-                self.connectbutton.setText('Connect')    
+                self.connectbutton.setText('Connect')
+                self.connectbutton.setToolTip('Connect to the discovered Yeelight device')    
 
  
 if __name__ == '__main__':
