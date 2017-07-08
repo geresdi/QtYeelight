@@ -1,6 +1,5 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QLineEdit, QLabel, QVBoxLayout, QGroupBox
-#from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QIcon
 from YeelightControl import YeelightControl as y
 
@@ -40,7 +39,6 @@ class App(QWidget):
         self.connectbutton = QPushButton('Connect', self)
         self.connectbutton.setToolTip('Connect to Yeelight device')
         self.connectbutton.setEnabled(False)
-        #self.discoverbutton.move(100,70)
         self.boxgroup = QGroupBox()
 
         self.ipbox.setText('IP address and port: ')
@@ -57,9 +55,6 @@ class App(QWidget):
         layout.addWidget(self.modelbox)
         layout.addWidget(self.idbox)
         layout.addWidget(self.versionbox)
-        #layout.addWidget(self.button)    
-        
-        #self.boxgroup.setLayout(layout)
         self.setLayout(layout)
 
     def discover_click(self):
