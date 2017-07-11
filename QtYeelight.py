@@ -170,12 +170,14 @@ class App(QWidget):
                 self.connectbutton.setToolTip('Disconnect from the Yeelight device')
                 self.togglebutton.setEnabled(True)
                 self.powerbutton.setEnabled(True)
+                self._connected = True
         else:
             if self.yeelight.disconnect():
                 self.connectbutton.setText('Connect')
                 self.connectbutton.setToolTip('Connect to the discovered Yeelight device') 
                 self.togglebutton.setEnabled(False)
-                self.powerbutton.setEnabled(False)   
+                self.powerbutton.setEnabled(False) 
+                self._connected = False  
 
     def toggle_click(self):
         self.yeelight.toggle()
